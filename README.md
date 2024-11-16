@@ -1,1 +1,0 @@
-# krutoiii_perec_zxc
