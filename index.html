@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>krutoiii_perec_</title>
+    <meta name="description" content="Page for creators, showcasing the team behind the site and channel.">
+    <meta name="keywords" content="Creators, Team, Developers, ZXC vibes">
+    <title>Creators - krutoiii_perec_</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
@@ -17,8 +19,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            overflow: hidden;
-            position: relative;
+            overflow-x: hidden; /* Отключаем горизонтальную прокрутку */
             height: 100vh;
         }
 
@@ -32,28 +33,26 @@
         }
 
         .card-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Автоматически заполняет строки, меняя размер карт */
             gap: 20px;
             padding: 20px;
             max-width: 1200px;
             z-index: 1;
             position: relative;
-            overflow-y: auto;
         }
 
         .card {
             position: relative;
-            width: 280px;
-            height: 180px;
+            width: 100%; /* Автоматическая ширина по ширине контейнера */
+            height: 300px; /* Уменьшена высота */
             overflow: hidden;
             border-radius: 15px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
             transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
             cursor: pointer;
             background: #1e1e1e;
-            user-select: none; /* Запрещаем выделение */
+            user-select: none;
         }
 
         .card img {
@@ -64,7 +63,7 @@
         }
 
         .card:hover {
-            transform: scale(1.1);
+            transform: scale(1.05);
             box-shadow: 0 8px 20px rgba(230, 57, 70, 0.8);
             filter: brightness(1.1);
         }
@@ -76,10 +75,10 @@
 
         .card .overlay {
             position: absolute;
-            top: 0;
+            bottom: 0;
             left: 0;
             width: 100%;
-            height: 100%;
+            height: 60px;
             background: rgba(0, 0, 0, 0.6);
             display: flex;
             justify-content: center;
@@ -100,187 +99,110 @@
             font-family: 'Poppins', sans-serif;
         }
 
+        .card-content {
+            padding: 10px;
+            color: #ffffff;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            height: 150px; /* Уменьшена высота содержимого */
+            overflow-y: auto;
+        }
+
         a {
             text-decoration: none;
             color: inherit;
         }
 
-        .links {
-            margin: 20px;
-            display: flex;
-            gap: 20px;
-            z-index: 2;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #e63946;
+            color: white;
+            padding: 12px 24px;
             font-size: 1rem;
             font-family: 'Poppins', sans-serif;
-            color: #ffffff;
-            text-decoration: none;
             border-radius: 25px;
+            text-decoration: none;
+            text-transform: uppercase;
             transition: all 0.3s ease;
+            z-index: 10;
         }
 
-        .btn.twitch {
-            background: #6441a5; /* Цвет Twitch */
-        }
-
-        .btn.donation {
-            background: #ffcc00; /* Цвет Donation Alerts */
-            color: #000000;
-        }
-
-        .btn:hover {
+        .back-btn:hover {
             transform: scale(1.1);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
-        .particle-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .card-container {
+                grid-template-columns: 1fr; /* Один столбец для мобильных устройств */
+            }
+
+            .card {
+                height: 250px; /* Уменьшена высота на мобильных */
+            }
         }
 
-        .particle {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background-color: #ff6347;
-        }
-
-        .footer {
-            position: fixed;
-            bottom: 10px;
-            font-size: 0.8rem;
-            color: #ffffff;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        /* Скрытая ссылка в левом верхнем углу */
-        .hidden-link {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            width: 30px;
-            height: 30px;
-            opacity: 0; /* Делает ссылку невидимой */
-            z-index: 100;
+        html {
+            scroll-behavior: smooth;
         }
     </style>
 </head>
 <body>
-    <!-- Скрытая ссылка в левом верхнем углу -->
-    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="hidden-link" target="_blank"></a>
-
-    <h1>krutoiii_perec_</h1>
-
-    <div class="links">
-        <a href="https://www.twitch.tv/aster4ikla" target="_blank" class="btn twitch">
-            <i class="fab fa-twitch"></i> Twitch
-        </a>
-        <a href="https://www.donationalerts.com/r/aster2511" target="_blank" class="btn donation">
-            <i class="fas fa-donate"></i> Donation Alerts
-        </a>
-    </div>
+    <a href="index.html" class="back-btn">Back to Home</a>
+    
+    <h1>Creators</h1>
 
     <div class="card-container">
-        <a href="https://www.youtube.com/watch?v=jV8SVQYtH1k&t=2s" target="_blank" class="card">
-            <img src="images/zxc1.jpg" alt="Image 1">
+        <!-- Card 1 -->
+        <div class="card">
+            <img src="images/creator1.jpg" alt="Creator 1">
             <div class="overlay">
-                <p>ZXC Style</p>
+                <p>balbes</p>
             </div>
-        </a>
+            <div class="card-content">
+                <p>Создатель творчиских видео, основатель ютуба и просто красавчик.</p>
+            </div>
+        </div>
 
-        <a href="https://www.youtube.com/watch?v=Xrqb1Ak48Ck" target="_blank" class="card">
-            <img src="images/zxc2.jpg" alt="Image 2">
+        <!-- Card 2 -->
+        <div class="card">
+            <img src="images/creator2.jpg" alt="Creator 2">
             <div class="overlay">
-                <p>ZXC Vibes</p>
+                <p>andriichm</p>
             </div>
-        </a>
+            <div class="card-content">
+                <p>создатель такого крутого сайта и просто гений.</p>
+            </div>
+        </div>
 
-        <a href="https://www.youtube.com/watch?v=A2uqPngC41o" target="_blank" class="card">
-            <img src="images/zxc3.jpg" alt="Image 3">
+        <!-- Card 3 -->
+        <div class="card">
+            <img src="images/creator3.jpg" alt="Creator 3">
             <div class="overlay">
-                <p>Chill Mode</p>
+                <p>aster</p>
             </div>
-        </a>
+            <div class="card-content">
+                <p>Создатель твич канала, монтажер и просто бездарность.</p>
+            </div>
+        </div>
 
-        <a href="https://www.youtube.com/watch?v=m63EzgcynS0" target="_blank" class="card">
-            <img src="images/zxc4.jpg" alt="Image 4">
+        <!-- Card 4 -->
+        <div class="card">
+            <img src="images/creator4.jpg" alt="Creator 4">
             <div class="overlay">
-                <p>Vibe Check</p>
+                <p>klim</p>
             </div>
-        </a>
+            <div class="card-content">
+                <p>Один из постоянных учасников наших видео и просто олд.</p>
+            </div>
+        </div>
     </div>
 
-    <div class="particle-container" id="particle-container"></div>
-
-    <div class="footer">
-        Зделано andriichm
-    </div>
-
-    <script>
-        const maxParticles = 500; // Максимальное количество частиц
-        let currentParticles = 0; // Текущее количество частиц
-
-        function createParticle() {
-            if (currentParticles >= maxParticles) return; // Проверка на лимит
-
-            currentParticles++;
-
-            const particle = document.createElement('div');
-            particle.classList.add('particle');
-            document.getElementById('particle-container').appendChild(particle);
-
-            const randomX = Math.random() * window.innerWidth;
-            const randomY = Math.random() * window.innerHeight;
-            particle.style.left = `${randomX}px`;
-            particle.style.top = `${randomY}px`;
-
-            const directionX = Math.random() * 2 - 1;
-            const directionY = Math.random() * 2 - 1;
-            const speed = Math.random() * 2 + 1;
-
-            function animateParticle() {
-                let posX = parseFloat(particle.style.left) + directionX * speed;
-                let posY = parseFloat(particle.style.top) + directionY * speed;
-
-                if (posX < 0) posX = window.innerWidth;
-                if (posX > window.innerWidth) posX = 0;
-                if (posY < 0) posY = window.innerHeight;
-                if (posY > window.innerHeight) posY = 0;
-
-                particle.style.left = `${posX}px`;
-                particle.style.top = `${posY}px`;
-
-                requestAnimationFrame(animateParticle);
-            }
-
-            animateParticle();
-
-            // Удаляем частицу через 5 секунд, уменьшая счетчик
-            setTimeout(() => {
-                particle.remove();
-                currentParticles--;
-            }, 5000);
-        }
-
-        for (let i = 0; i < 100; i++) {
-            createParticle();
-        }
-
-        setInterval(() => {
-            if (currentParticles < maxParticles) {
-                createParticle();
-            }
-        }, 300);
-    </script>
 </body>
 </html>
