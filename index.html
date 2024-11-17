@@ -162,10 +162,22 @@
             color: #ffffff;
             font-family: 'Poppins', sans-serif;
         }
+
+        /* Скрытая ссылка в левом верхнем углу */
+        .hidden-link {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 30px;
+            height: 30px;
+            opacity: 0; /* Делает ссылку невидимой */
+            z-index: 100;
+        }
     </style>
 </head>
 <body>
-    <div class="hidden-link" onclick="window.location.href='https://www.youtube.com/watch?v=dQw4w9WgXcQ';"></div>
+    <!-- Скрытая ссылка в левом верхнем углу -->
+    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="hidden-link" target="_blank"></a>
 
     <h1>krutoiii_perec_</h1>
 
