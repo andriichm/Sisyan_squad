@@ -297,6 +297,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             const audio = document.getElementById('background-audio');
             const video = document.getElementById('background-video');
+             audio.volume = 0.3;
     
             // Включаем звук и видео
             audio.play().catch((e) => {
@@ -371,6 +372,7 @@
                 createParticle();
             }
         }, 300);
+    
     
         // Управление воспроизведением звука при движении мыши (запускаем звук только один раз)
         let isAudioPlaying = false;  // Переменная для проверки состояния звука
