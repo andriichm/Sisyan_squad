@@ -103,41 +103,25 @@
             color: inherit;
         }
 
-        @keyframes zxcEffect {
-            0% {
-                transform: scale(1);
-                opacity: 1;
-            }
-            50% {
-                transform: scale(1.1);
-                opacity: 0.8;
-            }
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-
-        .card:hover {
-            animation: zxcEffect 0.5s ease-in-out;
-        }
-
         .particle-container {
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            width: 100vw; /* Фиксированные размеры */
+            height: 100vh;
+            overflow: hidden; /* Отключаем влияние частиц на контейнер */
             pointer-events: none;
             z-index: 0;
         }
 
         .particle {
             position: absolute;
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
             background-color: #ff6347;
+            opacity: 0.8;
+            will-change: transform; /* Оптимизация производительности */
         }
 
         .footer {
@@ -148,7 +132,6 @@
             font-family: 'Poppins', sans-serif;
         }
 
-        /* Мобильные стили */
         @media (max-width: 768px) {
             h1 {
                 font-size: 1.8rem;
@@ -160,45 +143,8 @@
                 gap: 10px;
             }
 
-            .card {
-                width: 100%;
-                height: auto;
-                margin-bottom: 10px;
-            }
-
-            .card img {
-                object-fit: cover;
-                height: auto;
-            }
-
             .footer {
                 font-size: 0.7rem;
-            }
-
-            /* Отключаем частицы на мобильных устройствах */
-            .particle-container {
-                display: none;
-            }
-        }
-
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 1.5rem;
-            }
-
-            .footer {
-                font-size: 0.6rem;
-            }
-
-            .card {
-                width: 100%;
-                height: auto;
-                margin-bottom: 5px;
-            }
-
-            .particle {
-                width: 8px;
-                height: 8px;
             }
         }
     </style>
@@ -213,21 +159,18 @@
                 <p>ZXC Style</p>
             </div>
         </a>
-
         <a href="https://www.youtube.com/watch?v=Xrqb1Ak48Ck" target="_blank" class="card">
             <img src="images/zxc2.jpg" alt="Image 2">
             <div class="overlay">
                 <p>ZXC Vibes</p>
             </div>
         </a>
-
         <a href="https://www.youtube.com/watch?v=A2uqPngC41o" target="_blank" class="card">
             <img src="images/zxc3.jpg" alt="Image 3">
             <div class="overlay">
                 <p>Chill Mode</p>
             </div>
         </a>
-
         <a href="https://www.youtube.com/watch?v=m63EzgcynS0" target="_blank" class="card">
             <img src="images/zxc4.jpg" alt="Image 4">
             <div class="overlay">
@@ -239,44 +182,58 @@
     <div class="particle-container" id="particle-container"></div>
 
     <script>
-        function createParticle() {
-            const particle = document.createElement('div');
-            particle.classList.add('particle');
-            document.getElementById('particle-container').appendChild(particle);
+    const maxParticles = 100; // Максимальное количество частиц
+    const particleContainer = document.getElementById('particle-container');
+    let particleCount = 0;
 
-            const randomX = Math.random() * window.innerWidth;
-            const randomY = Math.random() * window.innerHeight;
-            particle.style.left = `${randomX}px`;
-            particle.style.top = `${randomY}px`;
+    function createParticle() {
+        if (particleCount >= maxParticles) return; // Не создаем больше частиц, если достигнут максимум
 
-            const directionX = Math.random() * 2 - 1;
-            const directionY = Math.random() * 2 - 1;
-            const speed = Math.random() * 2 + 1;
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        particleContainer.appendChild(particle);
 
-            function animateParticle() {
-                let posX = parseFloat(particle.style.left) + directionX * speed;
-                let posY = parseFloat(particle.style.top) + directionY * speed;
+        particleCount++;
 
-                if (posX < 0) posX = window.innerWidth;
-                if (posX > window.innerWidth) posX = 0;
-                if (posY < 0) posY = window.innerHeight;
-                if (posY > window.innerHeight) posY = 0;
+        const randomX = Math.random() * window.innerWidth;
+        const randomY = Math.random() * window.innerHeight;
+        particle.style.left = `${randomX}px`;
+        particle.style.top = `${randomY}px`;
 
-                particle.style.left = `${posX}px`;
-                particle.style.top = `${posY}px`;
+        const directionX = Math.random() * 2 - 1;
+        const directionY = Math.random() * 2 - 1;
+        const speed = Math.random() * 1 + 0.5;
 
-                requestAnimationFrame(animateParticle);
-            }
+        function animateParticle() {
+            let posX = parseFloat(particle.style.left) + directionX * speed;
+            let posY = parseFloat(particle.style.top) + directionY * speed;
 
-            animateParticle();
+            if (posX < 0) posX = window.innerWidth;
+            if (posX > window.innerWidth) posX = 0;
+            if (posY < 0) posY = window.innerHeight;
+            if (posY > window.innerHeight) posY = 0;
+
+            particle.style.left = `${posX}px`;
+            particle.style.top = `${posY}px`;
+
+            requestAnimationFrame(animateParticle);
         }
 
-        for (let i = 0; i < 100; i++) {
-            createParticle();
-        }
+        animateParticle();
 
-        setInterval(createParticle, 300);
-    </script>
+        // Удаление частицы через 10 секунд
+        setTimeout(() => {
+            particle.remove();
+            particleCount--; // Уменьшаем счетчик при удалении
+            createParticle(); // Создаем новую частицу вместо удаленной
+        }, 10000);
+    }
+
+    // Запуск
+    for (let i = 0; i < maxParticles; i++) {
+        createParticle();
+    }
+</script>
 
     <div class="footer">
         Зделано andriichm
