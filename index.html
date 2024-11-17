@@ -39,8 +39,10 @@
             gap: 20px;
             padding: 20px;
             max-width: 1200px;
+            z-index: 1; /* Карточки поверх частиц */
+            position: relative;
         }
-
+     
         /* Карточка */
         .card {
             position: relative;
@@ -236,8 +238,13 @@
             });
         }
 
-        // Создание частиц с интервалом
-        setInterval(createParticle, 300); // Появление частиц каждые 300 миллисекунд
+        // Создание множества частиц сразу
+        for (let i = 0; i < 100; i++) {
+            createParticle(); // Создаем 100 частиц сразу
+        }
+
+        // Добавляем новые частицы каждые 300 миллисекунд
+        setInterval(createParticle, 300);
     </script>
 
     <!-- Подпись -->
