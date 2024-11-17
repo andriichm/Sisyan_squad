@@ -103,25 +103,32 @@
             color: inherit;
         }
 
+        .hidden-link {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 10px;
+            height: 10px;
+            z-index: 10;
+            cursor: pointer;
+        }
+
         .particle-container {
             position: absolute;
             top: 0;
             left: 0;
-            width: 100vw; /* Фиксированные размеры */
-            height: 100vh;
-            overflow: hidden; /* Отключаем влияние частиц на контейнер */
+            width: 100%;
+            height: 100%;
             pointer-events: none;
             z-index: 0;
         }
 
         .particle {
             position: absolute;
-            width: 8px;
-            height: 8px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
             background-color: #ff6347;
-            opacity: 0.8;
-            will-change: transform; /* Оптимизация производительности */
         }
 
         .footer {
@@ -133,23 +140,16 @@
         }
 
         @media (max-width: 768px) {
-            h1 {
-                font-size: 1.8rem;
-            }
-
-            .card-container {
-                flex-direction: column;
-                align-items: center;
-                gap: 10px;
-            }
-
-            .footer {
-                font-size: 0.7rem;
+            .hidden-link {
+                width: 10px;
+                height: 10px;
             }
         }
     </style>
 </head>
 <body>
+    <div class="hidden-link" onclick="window.location.href='https://www.youtube.com/watch?v=dQw4w9WgXcQ';"></div>
+
     <h1>krutoiii_perec_</h1>
 
     <div class="card-container">
@@ -159,18 +159,21 @@
                 <p>ZXC Style</p>
             </div>
         </a>
+
         <a href="https://www.youtube.com/watch?v=Xrqb1Ak48Ck" target="_blank" class="card">
             <img src="images/zxc2.jpg" alt="Image 2">
             <div class="overlay">
                 <p>ZXC Vibes</p>
             </div>
         </a>
+
         <a href="https://www.youtube.com/watch?v=A2uqPngC41o" target="_blank" class="card">
             <img src="images/zxc3.jpg" alt="Image 3">
             <div class="overlay">
                 <p>Chill Mode</p>
             </div>
         </a>
+
         <a href="https://www.youtube.com/watch?v=m63EzgcynS0" target="_blank" class="card">
             <img src="images/zxc4.jpg" alt="Image 4">
             <div class="overlay">
@@ -182,61 +185,47 @@
     <div class="particle-container" id="particle-container"></div>
 
     <script>
-    const maxParticles = 100; // Максимальное количество частиц
-    const particleContainer = document.getElementById('particle-container');
-    let particleCount = 0;
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            document.getElementById('particle-container').appendChild(particle);
 
-    function createParticle() {
-        if (particleCount >= maxParticles) return; // Не создаем больше частиц, если достигнут максимум
+            const randomX = Math.random() * window.innerWidth;
+            const randomY = Math.random() * window.innerHeight;
+            particle.style.left = `${randomX}px`;
+            particle.style.top = `${randomY}px`;
 
-        const particle = document.createElement('div');
-        particle.classList.add('particle');
-        particleContainer.appendChild(particle);
+            const directionX = Math.random() * 2 - 1;
+            const directionY = Math.random() * 2 - 1;
+            const speed = Math.random() * 2 + 1;
 
-        particleCount++;
+            function animateParticle() {
+                let posX = parseFloat(particle.style.left) + directionX * speed;
+                let posY = parseFloat(particle.style.top) + directionY * speed;
 
-        const randomX = Math.random() * window.innerWidth;
-        const randomY = Math.random() * window.innerHeight;
-        particle.style.left = `${randomX}px`;
-        particle.style.top = `${randomY}px`;
+                if (posX < 0) posX = window.innerWidth;
+                if (posX > window.innerWidth) posX = 0;
+                if (posY < 0) posY = window.innerHeight;
+                if (posY > window.innerHeight) posY = 0;
 
-        const directionX = Math.random() * 2 - 1;
-        const directionY = Math.random() * 2 - 1;
-        const speed = Math.random() * 1 + 0.5;
+                particle.style.left = `${posX}px`;
+                particle.style.top = `${posY}px`;
 
-        function animateParticle() {
-            let posX = parseFloat(particle.style.left) + directionX * speed;
-            let posY = parseFloat(particle.style.top) + directionY * speed;
+                requestAnimationFrame(animateParticle);
+            }
 
-            if (posX < 0) posX = window.innerWidth;
-            if (posX > window.innerWidth) posX = 0;
-            if (posY < 0) posY = window.innerHeight;
-            if (posY > window.innerHeight) posY = 0;
-
-            particle.style.left = `${posX}px`;
-            particle.style.top = `${posY}px`;
-
-            requestAnimationFrame(animateParticle);
+            animateParticle();
         }
 
-        animateParticle();
+        for (let i = 0; i < 100; i++) {
+            createParticle();
+        }
 
-        // Удаление частицы через 10 секунд
-        setTimeout(() => {
-            particle.remove();
-            particleCount--; // Уменьшаем счетчик при удалении
-            createParticle(); // Создаем новую частицу вместо удаленной
-        }, 10000);
-    }
-
-    // Запуск
-    for (let i = 0; i < maxParticles; i++) {
-        createParticle();
-    }
-</script>
+        setInterval(createParticle, 300);
+    </script>
 
     <div class="footer">
-        Made by andriichm
+        Зделано andriichm
     </div>
 </body>
 </html>
