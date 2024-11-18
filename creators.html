@@ -106,6 +106,12 @@
             font-size: 1rem;
             height: 150px; /* Уменьшена высота содержимого */
             overflow-y: auto;
+            opacity: 0; /* Текст скрыт по умолчанию */
+            transition: opacity 0.3s ease;
+        }
+
+        .card:hover .card-content {
+            opacity: 1; /* Текст появляется при наведении */
         }
 
         a {
