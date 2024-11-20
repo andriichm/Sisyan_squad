@@ -194,28 +194,47 @@
         html {
             scroll-behavior: smooth;
         }
-        @media (max-width: 1024px) {
+      @media (max-width: 1024px) {
     .card-container {
         grid-template-columns: repeat(2, 1fr); /* Два столбца на планшетах */
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
     .card-container {
-        grid-template-columns: 1fr; /* Один столбец на узких экранах */
+        grid-template-columns: 1fr; /* Один столбец на мобильных устройствах */
     }
 
     .card {
-        height: 200px; /* Уменьшение высоты для телефонов */
+        height: 250px; /* Уменьшение высоты карточек для устройств с шириной до 768px */
     }
 
     h1 {
-        font-size: 1.8rem; /* Уменьшение заголовка для телефонов */
+        font-size: 2rem; /* Уменьшение размера заголовка */
+    }
+
+    .back-btn {
+        padding: 10px 20px; /* Уменьшение отступов для кнопки */
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-container {
+        padding: 10px; /* Уменьшение отступов на мобильных устройствах */
+    }
+
+    .card {
+        height: 200px; /* Уменьшение высоты карточек для маленьких экранов */
+    }
+
+    h1 {
+        font-size: 1.8rem; /* Еще больше уменьшение шрифта заголовка */
     }
 
     .back-btn {
         padding: 10px 20px;
-        font-size: 0.9rem;
+        font-size: 0.9rem; /* Еще меньше шрифт для кнопки */
     }
 }
         img {
