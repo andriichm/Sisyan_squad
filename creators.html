@@ -32,15 +32,17 @@
             font-family: 'Poppins', sans-serif;
         }
 
-        .card-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Автоматически заполняет строки, меняя размер карт */
-            gap: 20px;
-            padding: 20px;
-            max-width: 1200px;
-            z-index: 1;
-            position: relative;
-        }
+      .card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Автоматически заполняет строки */
+    gap: 20px;
+    padding: 20px;
+    max-width: 100%; /* Убираем max-width: 1200px */
+    z-index: 1;
+    position: relative;
+    justify-items: center; /* Центрируем элементы по горизонтали */
+    margin: 0 auto; /* Центрируем контейнер */
+}
 
         .card {
             position: relative;
@@ -169,23 +171,39 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
+      @media (max-width: 768px) {
+    h1 {
+        font-size: 2rem; /* Уменьшаем размер заголовка */
+    }
 
-            .card-container {
-                grid-template-columns: 1fr; /* Один столбец для мобильных устройств */
-            }
+    .card-container {
+        grid-template-columns: 1fr; /* Один столбец для мобильных устройств */
+        padding: 10px; /* Уменьшаем отступы */
+    }
 
-            .card {
-                height: 250px; /* Уменьшена высота на мобильных */
-            }
-        }
+    .card {
+        height: 250px; /* Уменьшаем высоту карточек */
+    }
+}
 
-        html {
-            scroll-behavior: smooth;
-        }
+@media (max-width: 480px) {
+    .card-container {
+        padding: 10px; /* Уменьшаем отступы на мобильных */
+    }
+
+    .card {
+        height: 200px; /* Уменьшаем высоту карточек для маленьких экранов */
+    }
+
+    h1 {
+        font-size: 1.8rem; /* Уменьшаем размер заголовка для маленьких экранов */
+    }
+
+    .back-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
     </style>
 </head>
 <body>
