@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Page for creators, showcasing the team behind the site and channel.">
     <meta name="keywords" content="Creators, Team, Developers, ZXC vibes">
     <title>Creators - krutoiii_perec_</title>
@@ -37,10 +37,7 @@
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Автоматически заполняет строки, меняя размер карт */
             gap: 20px;
             padding: 20px;
-            max-width: 100%;
-             width: 100%;
-             margin: 0 auto;
-            justify-items: center;
+            max-width: 1200px;
             z-index: 1;
             position: relative;
         }
@@ -171,12 +168,6 @@
             transform: scale(1.1);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
-        @media (max-width: 480px) {
-    .back-btn {
-        padding: 8px 16px;  /* Уменьшение отступов */
-        font-size: 0.9rem;  /* Уменьшение размера шрифта */
-    }
-}
 
         @media (max-width: 768px) {
             h1 {
@@ -195,57 +186,6 @@
         html {
             scroll-behavior: smooth;
         }
-      @media (max-width: 1024px) {
-    .card-container {
-        grid-template-columns: repeat(2, 1fr); /* Два столбца на планшетах */
-    }
-}
-
-@media (max-width: 768px) {
-    .card-container {
-        grid-template-columns: 1fr; /* Один столбец на мобильных устройствах */
-    }
-
-    .card {
-        height: 250px; /* Уменьшение высоты карточек для устройств с шириной до 768px */
-    }
-
-    h1 {
-        font-size: 2rem; /* Уменьшение размера заголовка */
-    }
-
-    .back-btn {
-        padding: 10px 20px; /* Уменьшение отступов для кнопки */
-        font-size: 1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .card-container {
-        padding: 10px; /* Уменьшение отступов на мобильных устройствах */
-    }
-
-    .card {
-        height: 200px; /* Уменьшение высоты карточек для маленьких экранов */
-    }
-
-    h1 {
-        font-size: 1.8rem; /* Еще больше уменьшение шрифта заголовка */
-    }
-
-    .back-btn {
-        padding: 10px 20px;
-        font-size: 0.9rem; /* Еще меньше шрифт для кнопки */
-    }
-}
-        img {
-    max-width: 100%;
-    height: auto;
-}
-
-.card-container, .card {
-    width: 100%;
-    max-width: 100%; /* Убедитесь, что ширина не превышает экран устройства */
     </style>
 </head>
 <body>
@@ -294,7 +234,7 @@
                     </div>
                 </div>
                 <div class="card-back">
-                    <p style="padding: 20px;">aster — наш монтажер и ведущий на Twitch.</p>
+                    <p style="padding: 20px;">aster — наш монтажер и ведущий на Twitch. Всегда придумывает самые интересные идеи для видео и стримов.</p>
                 </div>
             </div>
         </div>
