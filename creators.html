@@ -32,15 +32,16 @@
             font-family: 'Poppins', sans-serif;
         }
 
-        .card-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Автоматически заполняет строки, меняя размер карт */
-            gap: 20px;
-            padding: 20px;
-            max-width: 1200px;
-            z-index: 1;
-            position: relative;
-        }
+       .card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Автоматически заполняет строки */
+    gap: 20px;
+    padding: 20px;
+    max-width: 100%; /* Убираем max-width: 1200px */
+    z-index: 1;
+    position: relative;
+    justify-items: center; /* Центрируем элементы по горизонтали */
+}
 
         .card {
             position: relative;
