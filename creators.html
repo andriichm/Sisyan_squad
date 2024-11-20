@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="Page for creators, showcasing the team behind the site and channel.">
     <meta name="keywords" content="Creators, Team, Developers, ZXC vibes">
     <title>Creators - krutoiii_perec_</title>
@@ -186,6 +186,30 @@
         html {
             scroll-behavior: smooth;
         }
+        @media (max-width: 1024px) {
+    .card-container {
+        grid-template-columns: repeat(2, 1fr); /* Два столбца на планшетах */
+    }
+}
+
+@media (max-width: 480px) {
+    .card-container {
+        grid-template-columns: 1fr; /* Один столбец на узких экранах */
+    }
+
+    .card {
+        height: 200px; /* Уменьшение высоты для телефонов */
+    }
+
+    h1 {
+        font-size: 1.8rem; /* Уменьшение заголовка для телефонов */
+    }
+
+    .back-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
     </style>
 </head>
 <body>
