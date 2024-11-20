@@ -230,6 +230,75 @@
     transform: scale(1.1);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
+        /* Оптимизация для мобильных устройств */
+@media (max-width: 768px) {
+    body {
+        height: auto; /* Убираем фиксированную высоту для прокрутки */
+    }
+
+    h1 {
+        font-size: 1.8rem; /* Уменьшаем заголовок */
+        margin: 20px;
+    }
+
+    .card-container {
+        flex-direction: column; /* Размещаем карточки в столбик */
+        gap: 15px; /* Уменьшаем расстояние между карточками */
+        padding: 10px;
+    }
+
+    .card {
+        width: 100%; /* Карточки растягиваются на ширину экрана */
+        height: 150px; /* Уменьшаем высоту */
+    }
+
+    .btn {
+        padding: 8px 16px; /* Уменьшаем размер кнопок */
+        font-size: 0.9rem; /* Уменьшаем шрифт кнопок */
+    }
+
+    .links {
+        flex-direction: column; /* Размещаем кнопки в столбик */
+        align-items: center;
+        gap: 10px;
+    }
+
+    .creators-btn {
+        font-size: 0.9rem; /* Уменьшаем кнопку "Devs" */
+        padding: 10px 16px;
+    }
+
+    .footer {
+        font-size: 0.7rem; /* Уменьшаем шрифт футера */
+    }
+
+    #background-video {
+        object-fit: cover; /* Сохраняем масштаб для экрана */
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem; /* Еще меньше заголовок для узких экранов */
+    }
+
+    .btn {
+        padding: 6px 12px;
+        font-size: 0.8rem; /* Еще меньше размер кнопок */
+    }
+
+    .card {
+        height: 120px; /* Уменьшаем карточки для совсем маленьких экранов */
+    }
+
+    .links {
+        gap: 8px;
+    }
+
+    .footer {
+        font-size: 0.6rem; /* Еще меньше футер */
+    }
+}
     </style>
 </head>
 <body>
