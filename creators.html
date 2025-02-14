@@ -62,6 +62,7 @@
             cursor: pointer;
             background: #1e1e1e;
             user-select: none;
+            will-change: transform; /* Оптимизация анимации */
             perspective: 1000px; /* Для эффекта 3D-переворота */
         }
 
@@ -122,7 +123,7 @@
 
         .card:hover {
             transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(230, 57, 70, 0.8);
+            outline: 3px solid rgba(230, 57, 70, 0.8);
             filter: brightness(0.7); /* Затемнение картинки при наведении */
         }
 
